@@ -1,0 +1,13 @@
+name: Auto Visit Website
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # 每 5 分钟执行一次
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  visit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send HTTP Request
+        run: curl -s -o /dev/null -w "%{http_code}" "https://de1.llmapi.top"
